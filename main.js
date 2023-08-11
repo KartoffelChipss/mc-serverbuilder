@@ -7,6 +7,10 @@ const fs = require("fs");
 
 let top = {};
 
+const store = new Store({
+    "servers": []
+})
+
 app.whenReady().then(async () => {
     if (process.platform === 'win32') {
         app.setAppUserModelId("MC Serverbuilder");
