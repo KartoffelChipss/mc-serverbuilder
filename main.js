@@ -19,18 +19,10 @@ app.whenReady().then(async () => {
     const screenHeight = screen.getPrimaryDisplay().workAreaSize.height;
     const screenWidth = screen.getPrimaryDisplay().workAreaSize.width;
 
-    let windowWidth = 800;
-    let windowHeight = 600;
-
-    if (screenHeight < 1300) {
-        windowWidth = 600;
-        windowHeight = 450;
-    }
-
     top.mainWindow = new BrowserWindow({
         title: "MC Serverbuilder",
-        height: windowHeight,
-        width: windowWidth,
+        height: screenHeight / 2,
+        width: screenWidth / 2,
         minHeight: 400,
         minWidth: 475,
         center: true,

@@ -15,3 +15,10 @@ function toggleMaxWindow() {
         window: "create",
     });
 }
+
+function resizeInput() {
+    let locationInput = document.getElementById("location");
+    locationInput.style.width = (locationInput.value.length) + 'ch';
+}
+  
+window.onload = resizeInput();

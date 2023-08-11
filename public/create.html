@@ -11,7 +11,7 @@
 <body>
     <div class="frame">
         <div class="left">
-            <!-- <img src="./img/logo.svg"> -->
+            <img src="./img/logo.svg">
             <h1>MC Serverbuilder</h1>
         </div>
         <div class="right">
@@ -28,6 +28,20 @@
                 Back
             </button> -->
             <h1>Configure Server</h1>
+        </div>
+
+        <div class="section">
+            <h2>General Information</h2>
+
+            <diV class="inputSection">
+                <label for="servernameInput">Server Name</label>
+                <input type="text" maxlength="100" id="servernameInput">
+            </diV>
+
+            <diV class="inputSection">
+                <label>Location</label>
+                <span><input type="text" disabled id="location" value="C:\users\janst\servers"><button role="button" id="changelocationbtn">Change</button></span>
+            </diV>
         </div>
     </main>
 
