@@ -1,0 +1,46 @@
+@import url("./assets.css");
+
+body {
+    padding: 15px;
+    width: calc(100% - 30px);
+}
+
+main {
+    width: 100%;
+
+    .top {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        border-bottom: solid 3px var(--green-1);
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+
+        h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        .backBtn {
+            color: var(--grey-light);
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            background-color: transparent;
+            border: none;
+            font-weight: 600;
+            margin-bottom: 5px;
+
+            svg {
+                height: 14px;
+                width: auto;
+                margin-right: 5px;
+            }
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}

@@ -1,21 +1,17 @@
 function closeWindow() {
     window.api.invoke("closeWindow", {
-        window: "main",
+        window: "create",
     });
 }
 
 function minimizeWindow() {
     window.api.invoke("minimize", {
-        window: "main",
+        window: "create",
     });
 }
 
 function toggleMaxWindow() {
     window.api.invoke("togglemaxwindow", {
-        window: "main",
+        window: "create",
     });
-}
-
-function openCreateWindow() {
-    window.api.invoke("openCreateWindow", {});
 }

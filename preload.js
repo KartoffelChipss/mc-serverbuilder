@@ -17,7 +17,7 @@ window.addEventListener('DOMContentLoaded', () => {
 contextBridge.exposeInMainWorld(
     "api", {
         invoke: (channel, data) => {
-            let validChannels = ["closeWindow", "minimize", "togglemaxwindow"];
+            let validChannels = ["closeWindow", "minimize", "togglemaxwindow", "openCreateWindow"];
             if (validChannels.includes(channel)) {
                 return ipcRenderer.invoke(channel, data);
             }
