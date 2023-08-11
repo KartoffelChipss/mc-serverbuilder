@@ -1,0 +1,133 @@
+@import url("./assets.css");
+
+body {
+    padding: 15px;
+    width: calc(100% - 30px);
+}
+
+main {
+    width: 100%;
+
+    .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+
+        border-bottom: solid 3px var(--green-1);
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+
+        h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        button {
+            background-color: var(--success);
+            border: none;
+            padding: 5px 8px;
+            border-radius: 7px;
+            color: var(--white-1);
+            font-size: 19px;
+            font-weight: 600;
+            transition: 
+                scale .2s ease-in-out,
+                filter .2s ease-in-out;
+
+            &:hover {
+                cursor: pointer;
+            }
+
+            &:active {
+                scale: .95;
+                filter: brightness(90%);
+            }
+        }
+    }
+
+    .noServerBox {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        span {
+            color: var(--grey-light);
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;
+            translate: 0px -30px;
+        }
+    }
+
+    .serverList {
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+        height: 90%;
+        max-height: 100%;
+        padding-right: 15px;
+
+        .serverBox {
+            width: calc(100% - 30px);
+            padding: 15px;
+            border-radius: 7px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 50px;
+            background-color: rgba(0,0,0, 20%);
+            margin-bottom: 15px;
+
+            .sec {
+                display: flex;
+                align-items: center;
+                height: 100%;
+            }
+
+            img {
+                height: 100%;
+                width: auto;
+                aspect-ratio: 1/1;
+                margin-right: 15px;
+                border-radius: 3px;
+            }
+
+            button {
+                background-color: rgba(255,255,255, 4%);
+                color: var(--white-1);
+                display: flex;
+                align-items: center;
+                font-size: 16px;
+                border-radius: 7px;
+                border: none;
+                padding: 10px 15px;
+                transition: 
+                    scale .2s ease-in-out,
+                    filter .2s ease-in-out;
+                margin-left: 15px;
+
+                &:hover {
+                    cursor: pointer;
+                }
+
+                &:active {
+                    scale: .95;
+                    filter: brightness(90%);
+                }
+
+                svg {
+                    height: 22px;
+                    width: auto;
+                    margin-right: 7px;
+                }
+
+                &.play {
+                    background-color: var(--green-2);
+                }
+            }
+        }
+    }
+}

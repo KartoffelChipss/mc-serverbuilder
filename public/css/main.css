@@ -1,0 +1,111 @@
+@import url("./assets.css");
+body {
+  padding: 15px;
+  width: calc(100% - 30px);
+}
+
+main {
+  width: 100%;
+}
+main .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-bottom: solid 3px var(--green-1);
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+main .top h1 {
+  margin: 0;
+  font-size: 28px;
+}
+main .top button {
+  background-color: var(--success);
+  border: none;
+  padding: 5px 8px;
+  border-radius: 7px;
+  color: var(--white-1);
+  font-size: 19px;
+  font-weight: 600;
+  transition: scale 0.2s ease-in-out, filter 0.2s ease-in-out;
+}
+main .top button:hover {
+  cursor: pointer;
+}
+main .top button:active {
+  scale: 0.95;
+  filter: brightness(90%);
+}
+main .noServerBox {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main .noServerBox span {
+  color: var(--grey-light);
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  translate: 0px -30px;
+}
+main .serverList {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  height: 90%;
+  max-height: 100%;
+  padding-right: 15px;
+}
+main .serverList .serverBox {
+  width: calc(100% - 30px);
+  padding: 15px;
+  border-radius: 7px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.2);
+  margin-bottom: 15px;
+}
+main .serverList .serverBox .sec {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+main .serverList .serverBox img {
+  height: 100%;
+  width: auto;
+  aspect-ratio: 1/1;
+  margin-right: 15px;
+  border-radius: 3px;
+}
+main .serverList .serverBox button {
+  background-color: rgba(255, 255, 255, 0.04);
+  color: var(--white-1);
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  border-radius: 7px;
+  border: none;
+  padding: 10px 15px;
+  transition: scale 0.2s ease-in-out, filter 0.2s ease-in-out;
+  margin-left: 15px;
+}
+main .serverList .serverBox button:hover {
+  cursor: pointer;
+}
+main .serverList .serverBox button:active {
+  scale: 0.95;
+  filter: brightness(90%);
+}
+main .serverList .serverBox button svg {
+  height: 22px;
+  width: auto;
+  margin-right: 7px;
+}
+main .serverList .serverBox button.play {
+  background-color: var(--green-2);
+}/*# sourceMappingURL=main.css.map */

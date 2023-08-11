@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+:root {
+    //--green-1: rgb(56, 175, 56);
+    //--green-2: rgb(51, 116, 51);
+    --green-1: #14A44D;
+    --green-2: #14773c;
+
+    --blue-1: #8DE4FF;
+    --blue-2: #8AC4FF;
+
+    --grey-1: #001011;
+    --grey-2: hsl(214, 6%, 16.5%);
+    --grey-3: #333333;
+    --grey-light: #7A7978;
+
+    --warning: #E4A11B;
+    --danger: #DC4C64;
+    --success: #14A44D;
+
+    --white-1: #fefefe;
+    --white-2: #cecece;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-y: hidden;
+}
+
+input, textarea, select, button {
+    font-family: 'Poppins', sans-serif;
+}
+
+input:focus-visible, textarea:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible {
+    outline: var(--green-2) solid 3px;
+    outline-offset: 0px;
+}
+
+body {
+    position: relative;
+    margin: 0;
+    width: 100%;
+    height: calc(100vh - 35px - 30px);
+
+    margin-top: 35px;
+
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+
+    background-color: var(--grey-2);
+    color: var(--white-1);
+
+    display: flex;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background: var(--green-2);
+}
+
+.frame {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: fixed;
+
+    top: 0px;
+    left: 0px;
+
+    background-color: var(--grey-1);
+
+    -webkit-app-region: drag;
+
+    width: 100%;
+
+    .left {
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        margin-left: 10px;
+
+        h1 {
+            color: var(--white-1);
+            font-size: 14px;
+            margin: 0;
+            font-weight: 400;
+        }
+
+        img {
+            height: 18px;
+            margin-right: 7px;
+            margin-bottom: 1px;
+        }
+    }
+
+    .right {
+        display: flex;
+        justify-content: right;
+        align-items: center;
+
+        button {
+            background-color: transparent;
+            border: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: min-content;
+            padding: 10px;
+            transition: background-color 5ms ease-in-out;
+
+            svg {
+                height: 15px;
+                width: 15px;
+
+                path {
+                    stroke: var(--white-1);
+                }
+            }
+
+            -webkit-app-region: no-drag;
+
+            &:hover {
+                cursor: pointer;
+                background-color: rgba(255, 255, 255, 10%);
+            }
+
+            &.close:hover {
+                background-color: var(--danger);
+            }
+
+            &.close:focus-visible {
+                background-color: var(--danger);
+                border: none;
+                outline: none;
+            }
+
+            &:focus-visible {
+                background-color: rgba(255, 255, 255, 10%);
+                border: none;
+                outline: none;
+            }
+        }
+    }
+}
