@@ -1,4 +1,4 @@
-const {app, BrowserWindow, Tray, Notification, dialog, nativeImage, Menu, shell, screen, nativeTheme} = require('electron')
+const { app, BrowserWindow, Tray, Notification, dialog, nativeImage, Menu, shell, screen, nativeTheme } = require('electron')
 const path = require('path')
 const fetch = require('cross-fetch');
 const { ipcMain } = require('electron/main');
@@ -88,5 +88,16 @@ app.whenReady().then(async () => {
 
         top.createWindow.loadFile("public/create.html");
         top.createWindow.show();
+    })
+
+    ipcMain.handle('dialog:openDirectory', async () => {
+        const { canceled, filePaths } = await dialog.showOpenDialog(top.createWindow, {
+            properties: ['openDirectory']
+        });
+        if (canceled) {
+            return
+        } else {
+            return filePaths[0]
+        }
     })
 })

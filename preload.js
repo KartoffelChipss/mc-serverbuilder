@@ -21,7 +21,8 @@ contextBridge.exposeInMainWorld(
             if (validChannels.includes(channel)) {
                 return ipcRenderer.invoke(channel, data);
             }
-        }
+        },
+        selectFolder: () => ipcRenderer.invoke('dialog:openDirectory')
     }
 );
 

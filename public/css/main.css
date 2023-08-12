@@ -57,7 +57,7 @@ main .serverList {
   overflow-y: scroll;
   height: 90%;
   max-height: 100%;
-  padding-right: 15px;
+  padding-right: 0px;
 }
 main .serverList .serverBox {
   width: calc(100% - 30px);

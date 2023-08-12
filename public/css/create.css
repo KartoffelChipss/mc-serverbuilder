@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("./assets.css");
 body {
   padding: 15px;
@@ -41,10 +42,27 @@ main h2 {
   margin: 0;
   margin-bottom: 15px;
 }
+main .mutliselect {
+  display: flex;
+  align-items: center;
+}
+main .mutliselect .inputSection {
+  margin: 0 7.5px;
+}
+main .mutliselect .inputSection:first-of-type {
+  margin: 0;
+  margin-right: 7.5px;
+}
+main .mutliselect .inputSection:last-of-type {
+  margin: 0;
+  margin-left: 7.5px;
+}
 main .inputSection {
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
+  flex-grow: 1;
+  position: relative;
 }
 main .inputSection label {
   margin-bottom: 5px;
@@ -58,6 +76,29 @@ main .inputSection input {
   font-size: 16px;
   padding: 7px;
   border-radius: 7px;
+}
+main .inputSection select {
+  position: relative;
+  background-color: var(--grey-3);
+  border: solid 3px var(--grey-1);
+  color: var(--white-1);
+  font-size: 16px;
+  padding: 7px;
+  border-radius: 7px;
+}
+main .inputSection.select select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+}
+main .inputSection.select::after {
+  content: "⌄";
+  font-size: 18px;
+  bottom: 15px;
+  right: 15px;
+  position: absolute;
+  font-weight: 500;
+  transform: scale(1.5, 1);
 }
 main .inputSection #location {
   width: 50%;

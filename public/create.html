@@ -40,8 +40,36 @@
 
             <diV class="inputSection">
                 <label>Location</label>
-                <span><input type="text" disabled id="location" value="C:\users\janst\servers"><button role="button" id="changelocationbtn">Change</button></span>
+                <span><input type="text" disabled id="location" value="C:\users\janst\servers"><button role="button" onclick="changeServerFileLoc()" id="changelocationbtn">Change</button></span>
             </diV>
+
+            <!-- <diV class="inputSection">
+                <label for="serversoftware">Server Software</label>
+                <select id="serversoftware">
+                    <option value="papermc" selected>PaperMC</option>
+                </select>
+            </diV> -->
+
+            <div class="mutliselect">
+                <diV class="inputSection select">
+                    <label for="serversoftware">Server Software</label>
+                    <select id="serversoftware" onclick="loadVersions()">
+                        <option value="paper" selected>PaperMC</option>
+                        <option value="waterfall">Waterfall</option>
+                        <option value="velocity">Velocity</option>
+                    </select>
+                </diV>
+                <diV class="inputSection select">
+                    <label for="serverversion">Version</label>
+                    <select id="serverversion" oninput="loadBuilds()"></select>
+                </diV>
+                <diV class="inputSection select">
+                    <label for="serversoftwarebuild">Build</label>
+                    <select id="serversoftwarebuild">
+                        
+                    </select>
+                </diV>
+            </div>
         </div>
     </main>
 
