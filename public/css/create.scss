@@ -3,10 +3,77 @@
 body {
     padding: 15px;
     width: calc(100% - 30px);
+
+    display: flex;
+    flex-direction: column;
+}
+
+body > .bottomRow {
+    position: sticky;
+    top: 100vh;
+}
+
+.bottomRow {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--grey-2);
+    border-radius: 7px;
+    //padding: 15px 0;
+    padding-top: 15px;
+
+    button {
+        background-color: rgba(255,255,255, 4%);
+        color: var(--white-1);
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+        border-radius: 7px;
+        border: none;
+        padding: 10px 15px;
+        transition: 
+            scale .2s ease-in-out,
+            filter .2s ease-in-out;
+        margin-left: 15px;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &:active {
+            scale: .95;
+            filter: brightness(90%);
+        }
+
+        svg {
+            height: 22px;
+            width: auto;
+            margin-right: 7px;
+        }
+
+        &.next {
+            background-color: var(--green-2);
+        }
+    }
 }
 
 main {
+    position: relative;
     width: 100%;
+    height: 100%;
+    overflow: auto;
+
+    .page {
+        display: none;
+
+        &.shown {
+            display: block;
+        }
+    }
 
     .top {
         display: flex;
@@ -52,6 +119,7 @@ main {
     .mutliselect {
         display: flex;
         align-items: center;
+        margin-bottom: 30px;
 
         .inputSection {
             margin: 0 7.5px;
@@ -79,6 +147,7 @@ main {
             margin-bottom: 5px;
             color: var(--white-1);
             font-size: 18px;
+            word-break: keep-all;
         }
 
         input {
@@ -88,6 +157,20 @@ main {
             font-size: 16px;
             padding: 7px;
             border-radius: 7px;
+
+            &:invalid {
+                color: var(--danger);
+                font-weight: 800;
+            }
+        }
+
+        input.pin {
+            width: calc(4ch + 4 * 10px);
+            letter-spacing: 10px;
+            font-weight: 600;
+            padding-right: 0px;
+            //text-align: center;
+            width: auto;
         }
 
         select {
@@ -104,6 +187,7 @@ main {
             select {
                 -webkit-appearance: none;
                 appearance: none;
+                height: 43px;
             }
 
             &::after {
@@ -114,6 +198,21 @@ main {
                 position: absolute;
                 font-weight: 500;
                 transform: scale(1.5,1);
+            }
+
+            &.loading {
+                margin-right: 5px;
+                &::before {
+                    content: "";
+                    transition: background .2s ease-in-out;
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(0,0,0, 30%);
+                    outline: solid 5px rgba(0,0,0, 30%);
+                    border-radius: 3px;
+                    z-index: 100;
+                }
             }
         }
 

@@ -3,10 +3,66 @@
 body {
   padding: 15px;
   width: calc(100% - 30px);
+  display: flex;
+  flex-direction: column;
+}
+
+body > .bottomRow {
+  position: sticky;
+  top: 100vh;
+}
+
+.bottomRow {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--grey-2);
+  border-radius: 7px;
+  padding-top: 15px;
+}
+.bottomRow button {
+  background-color: rgba(255, 255, 255, 0.04);
+  color: var(--white-1);
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  border-radius: 7px;
+  border: none;
+  padding: 10px 15px;
+  transition: scale 0.2s ease-in-out, filter 0.2s ease-in-out;
+  margin-left: 15px;
+}
+.bottomRow button:hover {
+  cursor: pointer;
+}
+.bottomRow button:active {
+  scale: 0.95;
+  filter: brightness(90%);
+}
+.bottomRow button svg {
+  height: 22px;
+  width: auto;
+  margin-right: 7px;
+}
+.bottomRow button.next {
+  background-color: var(--green-2);
 }
 
 main {
+  position: relative;
   width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+main .page {
+  display: none;
+}
+main .page.shown {
+  display: block;
 }
 main .top {
   display: flex;
@@ -45,6 +101,7 @@ main h2 {
 main .mutliselect {
   display: flex;
   align-items: center;
+  margin-bottom: 30px;
 }
 main .mutliselect .inputSection {
   margin: 0 7.5px;
@@ -68,6 +125,7 @@ main .inputSection label {
   margin-bottom: 5px;
   color: var(--white-1);
   font-size: 18px;
+  word-break: keep-all;
 }
 main .inputSection input {
   background-color: var(--grey-3);
@@ -76,6 +134,17 @@ main .inputSection input {
   font-size: 16px;
   padding: 7px;
   border-radius: 7px;
+}
+main .inputSection input:invalid {
+  color: var(--danger);
+  font-weight: 800;
+}
+main .inputSection input.pin {
+  width: calc(4ch + 40px);
+  letter-spacing: 10px;
+  font-weight: 600;
+  padding-right: 0px;
+  width: auto;
 }
 main .inputSection select {
   position: relative;
@@ -90,6 +159,7 @@ main .inputSection.select select {
   -webkit-appearance: none;
   -moz-appearance: none;
        appearance: none;
+  height: 43px;
 }
 main .inputSection.select::after {
   content: "⌄";
@@ -99,6 +169,20 @@ main .inputSection.select::after {
   position: absolute;
   font-weight: 500;
   transform: scale(1.5, 1);
+}
+main .inputSection.select.loading {
+  margin-right: 5px;
+}
+main .inputSection.select.loading::before {
+  content: "";
+  transition: background 0.2s ease-in-out;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  outline: solid 5px rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  z-index: 100;
 }
 main .inputSection #location {
   width: 50%;

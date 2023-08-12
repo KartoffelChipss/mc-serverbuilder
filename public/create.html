@@ -30,7 +30,7 @@
             <h1>Configure Server</h1>
         </div>
 
-        <div class="section">
+        <div class="page shown" id="page-1">
             <h2>General Information</h2>
 
             <diV class="inputSection">
@@ -55,23 +55,73 @@
                     <label for="serversoftware">Server Software</label>
                     <select id="serversoftware" onclick="loadVersions()">
                         <option value="paper" selected>PaperMC</option>
-                        <option value="waterfall">Waterfall</option>
-                        <option value="velocity">Velocity</option>
+                        <!-- <option value="waterfall">Waterfall</option>
+                        <option value="velocity">Velocity</option> -->
                     </select>
                 </diV>
                 <diV class="inputSection select">
                     <label for="serverversion">Version</label>
                     <select id="serverversion" oninput="loadBuilds()"></select>
                 </diV>
-                <diV class="inputSection select">
+                <diV class="inputSection select" id="serversoftwarebuildbox">
                     <label for="serversoftwarebuild">Build</label>
-                    <select id="serversoftwarebuild">
-                        
+                    <select id="serversoftwarebuild"></select>
+                </diV>
+            </div>
+        </div>
+
+        <div class="page" id="page-2">
+            <h2>Server Properties</h2>
+
+            <div class="mutliselect">
+                <div class="inputSection">
+                    <label for="serverport">Server port</label>
+                    <input value="1111" class="pin" type="text" maxlength="4" id="serverport" pattern="\d{4}"/>
+                </div>
+                <diV class="inputSection">
+                    <label for="serverip">Server IP</label>
+                    <input type="text" id="serverip" value="0.0.0.0" minlength="7" maxlength="15" size="15" pattern="^((\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$">
+                </diV>
+                <diV class="inputSection select">
+                    <label for="onlinemode">Online mode</label>
+                    <select id="onlinemode">
+                        <option value="true" selected>True</option>
+                        <option value="false">False</option>
+                    </select>
+                </diV>
+            </div>
+
+            <div class="mutliselect">
+                <diV class="inputSection select">
+                    <label for="onlinemode">Enable Command Blocks</label>
+                    <select id="onlinemode">
+                        <option value="true" selected>True</option>
+                        <option value="false">False</option>
+                    </select>
+                </diV>
+                <diV class="inputSection select">
+                    <label for="onlinemode">Spawn Monsters</label>
+                    <select id="onlinemode">
+                        <option value="true" selected>True</option>
+                        <option value="false">False</option>
+                    </select>
+                </diV>
+                <diV class="inputSection select">
+                    <label for="onlinemode">Spawn Animals</label>
+                    <select id="onlinemode">
+                        <option value="true" selected>True</option>
+                        <option value="false">False</option>
                     </select>
                 </diV>
             </div>
         </div>
+
     </main>
+
+    <div class="bottomRow" id="bottomRow">
+        <button type="button" onclick="closeWindow()">Cancel</button>
+        <button type="button" onclick="openPage('properties')" class="next">Next</button>
+    </div>
 
     <script src="./js/create.js"></script>
 </body>
