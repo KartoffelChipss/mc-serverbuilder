@@ -234,4 +234,13 @@ main {
             }
         }
     }
+
+    .plugins {
+        display: flex;
+        flex-wrap: wrap;
+
+        .plugin {
+            width: 500px;
+        }
+    }
 }

@@ -116,13 +116,25 @@ async function loadBuilds() {
     });
 }
 
+async function loadPlugins(page) {
+    await fetchAsync(`https://api.modrinth.com/v2/search?facets=[["versions: ${serverversionInput.value}"],["project_type:plugin"],["categories:paper"]]&query=`).then((data) => {
+        if (!data) return;
+
+        console.log(data)
+    });
+}
+
+loadPlugins(0);
+
 function openPage(page) {
     if (page === "default") {
-        let pastPage = document.getElementById("page-2");
-        let newPage = document.getElementById("page-1");
+        let page1 = document.getElementById("page-1");
+        let page2 = document.getElementById("page-2");
+        let page3 = document.getElementById("page-3");
 
-        pastPage.classList.remove("shown");
-        newPage.classList.add("shown");
+        page1.classList.add("shown");
+        page2.classList.remove("shown");
+        page3.classList.remove("shown");
 
         document.getElementById("bottomRow").innerHTML = `
         <button type="button" onclick="closeWindow()">Cancel</button>
@@ -130,14 +142,30 @@ function openPage(page) {
     }
 
     if (page === 'properties') {
-        let pastPage = document.getElementById("page-1");
-        let newPage = document.getElementById("page-2");
+        let page1 = document.getElementById("page-1");
+        let page2 = document.getElementById("page-2");
+        let page3 = document.getElementById("page-3");
 
-        pastPage.classList.remove("shown");
-        newPage.classList.add("shown");
+        page1.classList.remove("shown");
+        page2.classList.add("shown");
+        page3.classList.remove("shown");
 
         document.getElementById("bottomRow").innerHTML = `
         <button type="button" onclick="openPage('default')">Back</button>
         <button type="button" onclick="openPage('plugins')" class="next">Next</button>`
+    }
+
+    if (page === 'plugins') {
+        let page1 = document.getElementById("page-1");
+        let page2 = document.getElementById("page-2");
+        let page3 = document.getElementById("page-3");
+
+        page1.classList.remove("shown");
+        page2.classList.remove("shown");
+        page3.classList.add("shown");
+
+        document.getElementById("bottomRow").innerHTML = `
+        <button type="button" onclick="openPage('properties')">Back</button>
+        <button type="button" onclick="finishCreate()" class="next">Create</button>`
     }
 }

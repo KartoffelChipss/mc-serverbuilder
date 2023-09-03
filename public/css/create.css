@@ -198,4 +198,11 @@ main .inputSection #changelocationbtn {
 }
 main .inputSection #changelocationbtn:hover {
   cursor: pointer;
+}
+main .plugins {
+  display: flex;
+  flex-wrap: wrap;
+}
+main .plugins .plugin {
+  width: 500px;
 }/*# sourceMappingURL=create.css.map */
