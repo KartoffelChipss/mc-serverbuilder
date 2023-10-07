@@ -1,3 +1,11 @@
+let serversoftwareInput = document.getElementById("serversoftware");
+let serverversionInput = document.getElementById("serverversion");
+let serversoftwarebuildInput = document.getElementById("serversoftwarebuild");
+
+let serversoftwarebuildbox = document.getElementById("serversoftwarebuildbox");
+
+let locationInput = document.getElementById("location");
+
 function closeWindow() {
     window.api.invoke("closeWindow", {
         window: "create",
@@ -17,7 +25,6 @@ function toggleMaxWindow() {
 }
 
 function resizeInput() {
-    let locationInput = document.getElementById("location");
     locationInput.style.width = (locationInput.value.length) + 'ch';
 }
 
@@ -32,7 +39,6 @@ async function fetchAsync(url) {
 function changeServerFileLoc() {
     window.api.selectFolder().then(result => {
         if (result) {
-            let locationInput = document.getElementById("location");
             locationInput.value = result;
             locationInput.style.width = (locationInput.value.length) + 'ch';
         }
@@ -40,12 +46,6 @@ function changeServerFileLoc() {
 }
 
 async function loadVersions() {
-    let serversoftwareInput = document.getElementById("serversoftware");
-    let serverversionInput = document.getElementById("serverversion");
-    let serversoftwarebuildInput = document.getElementById("serversoftwarebuild");
-
-    let serversoftwarebuildbox = document.getElementById("serversoftwarebuildbox");
-
     serversoftwarebuildbox.classList.add("loading");
 
     await fetchAsync(`https://api.papermc.io/v2/projects/${serversoftwareInput.value}`).then(async (data) => {
@@ -88,12 +88,6 @@ async function loadVersions() {
 loadVersions()
 
 async function loadBuilds() {
-    let serversoftwareInput = document.getElementById("serversoftware");
-    let serverversionInput = document.getElementById("serverversion");
-    let serversoftwarebuildInput = document.getElementById("serversoftwarebuild");
-
-    let serversoftwarebuildbox = document.getElementById("serversoftwarebuildbox");
-    
     serversoftwarebuildbox.classList.add("loading");
 
     await fetchAsync(`https://api.papermc.io/v2/projects/${serversoftwareInput.value}/versions/${serverversionInput.value}/builds`).then((data) => {
@@ -130,11 +124,11 @@ function openPage(page) {
     if (page === "default") {
         let page1 = document.getElementById("page-1");
         let page2 = document.getElementById("page-2");
-        let page3 = document.getElementById("page-3");
+        //let page3 = document.getElementById("page-3");
 
         page1.classList.add("shown");
         page2.classList.remove("shown");
-        page3.classList.remove("shown");
+        //page3.classList.remove("shown");
 
         document.getElementById("bottomRow").innerHTML = `
         <button type="button" onclick="closeWindow()">Cancel</button>
@@ -144,28 +138,45 @@ function openPage(page) {
     if (page === 'properties') {
         let page1 = document.getElementById("page-1");
         let page2 = document.getElementById("page-2");
-        let page3 = document.getElementById("page-3");
+        //let page3 = document.getElementById("page-3");
 
         page1.classList.remove("shown");
         page2.classList.add("shown");
-        page3.classList.remove("shown");
+        //page3.classList.remove("shown");
 
         document.getElementById("bottomRow").innerHTML = `
         <button type="button" onclick="openPage('default')">Back</button>
-        <button type="button" onclick="openPage('plugins')" class="next">Next</button>`
-    }
-
-    if (page === 'plugins') {
-        let page1 = document.getElementById("page-1");
-        let page2 = document.getElementById("page-2");
-        let page3 = document.getElementById("page-3");
-
-        page1.classList.remove("shown");
-        page2.classList.remove("shown");
-        page3.classList.add("shown");
-
-        document.getElementById("bottomRow").innerHTML = `
-        <button type="button" onclick="openPage('properties')">Back</button>
         <button type="button" onclick="finishCreate()" class="next">Create</button>`
     }
+
+    // if (page === 'plugins') {
+    //     let page1 = document.getElementById("page-1");
+    //     let page2 = document.getElementById("page-2");
+    //     let page3 = document.getElementById("page-3");
+
+    //     page1.classList.remove("shown");
+    //     page2.classList.remove("shown");
+    //     page3.classList.add("shown");
+
+    //     document.getElementById("bottomRow").innerHTML = `
+    //     <button type="button" onclick="openPage('properties')">Back</button>
+    //     <button type="button" onclick="finishCreate()" class="next">Create</button>`
+    // }
+}
+
+function finishCreate() {
+    console.log(document.getElementById("servernameInput").value)
+    window.api.invoke("finishCreate", {
+        location: locationInput.value,
+        serversoftware: serversoftwareInput.value,
+        serverversion: serverversionInput.value,
+        serversoftwarebuild: serversoftwarebuildInput.value,
+        servername: document.getElementById("servernameInput").value,
+        serverport: document.getElementById("serverport").value,
+        serverip: document.getElementById("serverip").value,
+        onlinemode: document.getElementById("onlinemode").value,
+        enablecmdblocks: document.getElementById("enablecmdblocks").value,
+        spawnmonsters: document.getElementById("spawnmonsters").value,
+        spawnanimals: document.getElementById("spawnanimals").value,
+    });
 }

@@ -69,8 +69,8 @@ app.whenReady().then(async () => {
     ipcMain.handle("openCreateWindow", (event, args) => {
         top.createWindow = new BrowserWindow({
             title: "MC Serverbuilder",
-            height: Math.floor(screenHeight * 0.75),
-            width: Math.floor(screenWidth * 0.75),
+            height: Math.floor(screenHeight * 0.6),
+            width: Math.floor(screenWidth * 0.6),
             minHeight: 400,
             minWidth: 475,
             center: true,
@@ -100,4 +100,13 @@ app.whenReady().then(async () => {
             return filePaths[0]
         }
     })
+
+    ipcMain.handle("finishCreate", (e, data) => {
+        let servername = data.servername
+        let safename = servername.replace(/[^a-z0-9]/gi, '_').toLowerCase();
+        console.log(safename)
+        if (!fs.existsSync(data.location + path.sep + safename)) fs.mkdir(data.location + path.sep + safename, () => {});
+
+        console.log(data.location + path.sep + safename)
+    });
 })
